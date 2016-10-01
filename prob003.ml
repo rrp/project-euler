@@ -4,8 +4,8 @@ open Core.Std ;;
 
 let factor_candidates x = 
         let rec up_to_sqrt x n = 
-                if n*n > x then n - 1 else
-                        up_to_sqrt x (n + 1) in
+                if n*n > x then (-) n 1 else
+                        up_to_sqrt x ((+) n 1) in
         List.range 2 (up_to_sqrt x 2)
 ;;
 

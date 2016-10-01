@@ -5,7 +5,7 @@ open Core.Std ;;
 let fibonacci_max = 4_000_000 ;;
 
 let rec fib a b max = 
-        if (a+b) < max then a :: (fib b (a+b) max) else [a;b] ;;
+        if ((+) a b) < max then a :: (fib b ((+) a b) max) else [a;b] ;;
 
 let is_even a = 
         a mod 2 = 0 ;;
