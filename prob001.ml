@@ -1,21 +1,15 @@
 (* https://projecteuler.net/problem=1 *)
 
-let divisible_by_three x =
-        x mod 3 = 0 ;;
-
-let divisible_by_five x =
-        x mod 5 = 0 ;;
+open Core.Std ;;
 
 let divisible_by_three_or_five x = 
-        divisible_by_three x || divisible_by_five x ;;
+        x mod 3 = 0 || x mod 5 = 0 ;;
 
-let rec range a b =
-        if a >= b then [] else a :: range (a+1) b ;;
+let nums = List.filter ~f:(divisible_by_three_or_five) (List.range 1 1000) ;;
 
-let rec sum cond l =
-        match l with
-        | [] -> 0
-        | hd :: tl -> if cond hd then hd + sum cond tl else sum cond tl
+let sum = List.reduce ~f:(+) nums ;;
+
+match sum with
+| None -> printf "None\n"
+| Some x -> printf "%d\n" x
 ;;
-
-print_int (sum divisible_by_three_or_five (range 1 1000)) ;;
