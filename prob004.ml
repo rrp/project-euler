@@ -34,7 +34,7 @@ let max_pal three_digits =
         List.reduce ~f:(max) palindromes
 ;;
 
-match max_pal (List.range 100 999) with
+match max_pal (List.range ~stride:(-1) 999 99) with
 | None -> printf "No palindromes found\n"
 | Some num -> printf "%d\n" num
 
